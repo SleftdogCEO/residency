@@ -14,13 +14,13 @@
 
         :root {
             --bg: #0a0a0b;
-            --surface: #141416;
-            --surface-elevated: #1a1a1e;
+            --surface: #111113;
+            --surface-2: #18181b;
             --border: #27272a;
             --text: #fafafa;
             --muted: #a1a1aa;
             --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
+            --accent-glow: rgba(59, 130, 246, 0.12);
             --purple: #8b5cf6;
             --red: #ef4444;
             --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -38,7 +38,19 @@
             overflow-x: hidden;
         }
 
-        /* Hero with Background */
+        /* Animated Background */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -49,40 +61,35 @@
             overflow: hidden;
         }
 
-        .hero-bg {
+        .hero-orb {
             position: absolute;
-            inset: 0;
-            background: 
-                linear-gradient(180deg, rgba(10,10,11,0.3) 0%, rgba(10,10,11,0.8) 50%, rgba(10,10,11,1) 100%),
-                url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80') center/cover;
-            filter: saturate(0.7) brightness(0.6);
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
             pointer-events: none;
-            animation: pulse 8s ease-in-out infinite;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .hero-glow-2 {
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
+        .hero-orb-1 {
+            top: 10%;
+            right: 10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-            animation: pulse 10s ease-in-out infinite reverse;
+            background: rgba(59, 130, 246, 0.15);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+        .hero-orb-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(139, 92, 246, 0.1);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
         .hero-content {
@@ -104,13 +111,12 @@
             padding: 0.5rem 1rem;
             background: var(--accent-glow);
             border-radius: 4px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -121,9 +127,9 @@
         }
 
         .hero-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--muted);
-            max-width: 700px;
+            max-width: 650px;
             margin-bottom: 3rem;
         }
 
@@ -134,23 +140,19 @@
 
         .stats {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
         .stat {
-            display: flex;
-            flex-direction: column;
-            background: rgba(20, 20, 22, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
+            padding: 1.25rem 0;
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
         }
 
         .stat-value {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -158,7 +160,7 @@
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -166,358 +168,254 @@
 
         /* Sections */
         section {
-            padding: 6rem 2rem;
-            max-width: 1100px;
+            padding: 8rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         h2 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        /* Visual Divider */
-        .visual-break {
-            height: 60vh;
-            min-height: 400px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .visual-break-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            filter: saturate(0.6) brightness(0.4);
-        }
-
-        .visual-break::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, var(--bg) 0%, transparent 20%, transparent 80%, var(--bg) 100%);
-            z-index: 1;
-        }
-
-        .visual-break-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .visual-break-content blockquote {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* Quote Blocks */
-        .quote-block {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 2rem;
-            margin: 3rem 0;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .quote-block p {
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--muted);
             margin-bottom: 1rem;
         }
 
-        .quote-block p:last-child {
-            margin-bottom: 0;
+        /* Divider Quote */
+        .divider-quote {
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .quote-block .highlight {
-            color: var(--text);
-            font-style: normal;
+        .divider-quote blockquote {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 3.5vw, 2rem);
             font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text);
+            position: relative;
         }
 
-        /* Story Cards with Images */
+        .divider-quote blockquote::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Story Cards */
         .stories {
-            display: grid;
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
 
         .story {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: border-color 0.3s, transform 0.3s;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: border-color 0.3s;
         }
 
         .story:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
-        .story-image {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .story-image::after {
+        .story::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(20,20,22,0.5) 50%, var(--surface) 100%);
-        }
-
-        .story-content {
-            padding: 2rem 2.5rem 2.5rem;
-            margin-top: -3rem;
-            position: relative;
-            z-index: 1;
+            top: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 1px;
+            background: var(--gradient);
+            border-radius: 1px;
         }
 
         .story-label {
             display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--red);
             margin-bottom: 1rem;
-            padding: 0.3rem 0.8rem;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 4px;
         }
 
         .story h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .story p {
             color: var(--muted);
-            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .story p:last-child {
+            margin-bottom: 0;
         }
 
         .story .lesson {
             margin-top: 1.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border);
-            font-size: 0.95rem;
             color: var(--text);
             font-style: italic;
         }
 
         /* Innovation Section */
         .innovation {
-            background: linear-gradient(135deg, var(--surface) 0%, #0f1419 100%);
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            margin: 4rem auto;
-            max-width: 1100px;
-        }
-
-        .innovation-hero {
-            height: 300px;
-            background: 
-                linear-gradient(180deg, transparent 0%, var(--surface) 100%),
-                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80') center/cover;
-            filter: saturate(0.7);
-            position: relative;
-        }
-
-        .innovation-content {
+            border-radius: 20px;
             padding: 3rem;
-            margin-top: -4rem;
+            margin: 4rem 0;
             position: relative;
+            overflow: hidden;
+        }
+
+        .innovation::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .innovation h2 {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.75rem;
         }
 
         .innovation h2::before {
             content: '>';
             font-family: 'Space Grotesk', monospace;
             color: var(--accent);
-            font-size: 2rem;
+        }
+
+        .innovation > p {
+            color: var(--muted);
+            margin: 1.5rem 0;
+            max-width: 700px;
         }
 
         .innovation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
         }
 
         .innovation-item {
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
+            padding: 1.25rem;
+            background: var(--surface-2);
+            border-radius: 10px;
             border: 1px solid var(--border);
-            transition: border-color 0.3s, background 0.3s;
-        }
-
-        .innovation-item:hover {
-            border-color: var(--accent);
-            background: var(--accent-glow);
         }
 
         .innovation-item h4 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .innovation-item h4::before {
-            content: '◆';
-            color: var(--accent);
-            font-size: 0.6rem;
+            margin-bottom: 0.25rem;
+            color: var(--text);
         }
 
         .innovation-item p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--muted);
         }
 
-        /* Video Section Placeholder */
-        .video-section {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .video-placeholder {
-            background: var(--bg);
-            border: 2px dashed var(--border);
-            border-radius: 16px;
-            padding: 4rem 2rem;
+        /* Values */
+        .values-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-top: 2rem;
         }
 
-        .video-placeholder svg {
-            width: 64px;
-            height: 64px;
-            color: var(--muted);
-            margin-bottom: 1rem;
-        }
-
-        .video-placeholder p {
-            color: var(--muted);
-        }
-
-        /* Values Section with Image Grid */
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .value-card {
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
+            border-radius: 12px;
         }
 
-        .value-card-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--accent);
         }
 
-        .value-card-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, var(--surface) 100%);
-        }
-
-        .value-card-content {
-            padding: 1.5rem;
-            margin-top: -2rem;
-            position: relative;
-        }
-
-        .value-card h4 {
+        .value-content h4 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        .value-card p {
+        .value-content p {
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         /* Closing */
         .closing {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            margin: 4rem 0;
-        }
-
-        .closing-bg {
-            position: absolute;
-            inset: 0;
-            background: 
-                linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%),
-                url('https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1600&q=80') center/cover;
-            filter: saturate(0.5) brightness(0.3);
-        }
-
-        .closing-content {
+            text-align: center;
+            padding: 6rem 2rem;
             position: relative;
             z-index: 1;
-            padding: 5rem 3rem;
-            text-align: center;
         }
 
         .closing h2 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .closing p {
+        .closing .subtitle {
             color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
             font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
         .closing .goal {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            color: var(--text);
+            font-size: 1.3rem;
             font-weight: 500;
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.6;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Footer */
@@ -525,11 +423,13 @@
             text-align: center;
             padding: 3rem 2rem;
             color: var(--muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
         }
 
-        /* Scroll indicator */
+        /* Scroll hint */
         .scroll-hint {
             position: absolute;
             bottom: 2rem;
@@ -540,55 +440,46 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--muted);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             animation: bounce 2s infinite;
             z-index: 2;
         }
 
         .scroll-hint svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
         }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .stats {
-                gap: 1rem;
-            }
-            .stat {
-                padding: 1rem 1.5rem;
-            }
-            .stat-value {
-                font-size: 2rem;
-            }
+        @media (max-width: 600px) {
             section {
-                padding: 4rem 1.5rem;
+                padding: 5rem 1.5rem;
             }
-            .story-content, .innovation-content, .closing-content {
+            .stats {
+                gap: 1.5rem;
+            }
+            .story, .innovation {
                 padding: 2rem;
             }
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-            .visual-break {
-                height: 50vh;
+            .innovation-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-grid"></div>
+
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-glow-2"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
         <div class="hero-content">
             <span class="label">Emergency Medicine Applicant</span>
             <h1>Replacing Uncertainty with Competence</h1>
@@ -618,133 +509,97 @@
         </div>
     </section>
 
-    <div class="visual-break">
-        <div class="visual-break-bg" style="background-image: url('https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=1920&q=80');"></div>
-        <div class="visual-break-content">
-            <blockquote>Emergency care is not about adrenaline—it's about discipline, vigilance, and steady leadership when others are overwhelmed.</blockquote>
-        </div>
+    <div class="divider-quote">
+        <blockquote>Emergency care is not about adrenaline—it's about discipline, vigilance, and steady leadership when others are overwhelmed.</blockquote>
     </div>
 
     <section>
         <h2>Clinical Moments That Shaped Me</h2>
         <div class="stories">
             <div class="story">
-                <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1200&q=80');"></div>
-                <div class="story-content">
-                    <span class="story-label">Vigilance</span>
-                    <h3>The Patient Who Appeared Stable</h3>
-                    <p>On a teaching shift, I worked with a resident caring for a patient who presented after reportedly using PCP. I expected agitation. Instead, he was nearly comatose. Throughout the shift, I reassessed him repeatedly. Near the end, his mental status improved—only for him to suddenly vomit blood. The room shifted instantly.</p>
-                    <p class="lesson">"What stayed with me was not the intensity of that moment, but the vigilance that preceded it. Emergency Medicine demands constant reassessment and anticipation of deterioration, even when a patient appears stable."</p>
-                </div>
+                <span class="story-label">Vigilance</span>
+                <h3>The Patient Who Appeared Stable</h3>
+                <p>On a teaching shift, I worked with a resident caring for a patient who presented after reportedly using PCP. I expected agitation. Instead, he was nearly comatose. Throughout the shift, I reassessed him repeatedly. Near the end, his mental status improved—only for him to suddenly vomit blood. The room shifted instantly.</p>
+                <p class="lesson">What stayed with me was not the intensity of that moment, but the vigilance that preceded it. Emergency Medicine demands constant reassessment and anticipation of deterioration, even when a patient appears stable.</p>
             </div>
 
             <div class="story">
-                <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1200&q=80');"></div>
-                <div class="story-content">
-                    <span class="story-label">Clarity in Chaos</span>
-                    <h3>A Family in Their Worst Moment</h3>
-                    <p>I helped stabilize a pregnant woman who had been stabbed multiple times with a screwdriver. As I dressed her wounds, I reassured her three terrified children and explained why she did not need immediate imaging or antibiotics despite their very real fears.</p>
-                    <p class="lesson">"Bringing clarity and calm to that kind of chaos reminded me exactly why I am committed to this work. Leaving a professional and reassuring presence in crisis is a responsibility I value deeply."</p>
-                </div>
+                <span class="story-label">Clarity in Chaos</span>
+                <h3>A Family in Their Worst Moment</h3>
+                <p>I helped stabilize a pregnant woman who had been stabbed multiple times with a screwdriver. As I dressed her wounds, I reassured her three terrified children and explained why she did not need immediate imaging or antibiotics despite their very real fears.</p>
+                <p class="lesson">Bringing clarity and calm to that kind of chaos reminded me exactly why I am committed to this work. Leaving a professional and reassuring presence in crisis is a responsibility I value deeply.</p>
             </div>
         </div>
     </section>
 
-    <div class="innovation">
-        <div class="innovation-hero"></div>
-        <div class="innovation-content">
+    <div class="divider-quote">
+        <blockquote>Every patient encounter begins with limited information and demands thoughtful, decisive action.</blockquote>
+    </div>
+
+    <section>
+        <div class="innovation">
             <h2>The Internal AI-Guy</h2>
-            <p style="color: var(--muted); max-width: 800px; font-size: 1.1rem;">During medical school, I founded Sleft. I went door-to-door selling credit-card machines in Philadelphia. Often I walked in with little information beyond my ability to assess the situation quickly. Success required reading the room, identifying the core problem, adjusting in real time, and following through with real, tangible value.</p>
-            <p style="margin-top: 1.5rem; font-size: 1.15rem;"><strong>Every patient encounter in the Emergency Department similarly begins with limited information and demands thoughtful, decisive action.</strong></p>
+            <p>During medical school, I founded Sleft. I went door-to-door selling credit-card machines in Philadelphia. Often I walked in with little information beyond my ability to assess the situation quickly. Success required reading the room, identifying the core problem, adjusting in real time, and following through with real, tangible value.</p>
             
             <div class="innovation-grid">
                 <div class="innovation-item">
                     <h4>AI Development</h4>
-                    <p>Building AI agents for clinical workflows and process improvement</p>
+                    <p>Building clinical AI agents</p>
                 </div>
                 <div class="innovation-item">
                     <h4>Systems Design</h4>
-                    <p>Improving processes from the inside out</p>
+                    <p>Improving processes</p>
                 </div>
                 <div class="innovation-item">
-                    <h4>Health Technology</h4>
-                    <p>Bridging technology and patient care</p>
+                    <h4>Health Tech</h4>
+                    <p>Technology meets care</p>
                 </div>
                 <div class="innovation-item">
                     <h4>Problem Solving</h4>
-                    <p>From landing pages to residency AI tools</p>
+                    <p>From landing pages to AI tools</p>
                 </div>
             </div>
 
-            <p style="margin-top: 2.5rem; color: var(--muted); font-size: 1.05rem;">I expect I will naturally become the internal AI-guy within a residency program. At the same time, my primary focus remains sharpening my clinical judgment, procedural competence, and diagnostic reasoning.</p>
+            <p>I expect I will naturally become the internal AI-guy within a residency program. At the same time, my primary focus remains sharpening my clinical judgment, procedural competence, and diagnostic reasoning.</p>
+            <p style="margin-top: 1.5rem; color: var(--text); font-weight: 500;">Innovation is meaningful only if it supports excellent patient care.</p>
         </div>
-    </div>
-
-    <div class="visual-break" style="height: 50vh;">
-        <div class="visual-break-bg" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80');"></div>
-        <div class="visual-break-content">
-            <blockquote>Innovation is meaningful only if it supports excellent patient care.</blockquote>
-        </div>
-    </div>
+    </section>
 
     <section>
-        <h2>What Drives Me</h2>
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-card-image" style="background-image: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80');"></div>
-                <div class="value-card-content">
-                    <h4>Intellectual Demands</h4>
-                    <p>Caring for the undifferentiated patient, refining broad differentials, tolerating diagnostic uncertainty while protecting patient safety.</p>
+        <h2>What I Value in Emergency Medicine</h2>
+        <div class="values-list">
+            <div class="value-item">
+                <div class="value-icon">01</div>
+                <div class="value-content">
+                    <h4>The Undifferentiated Patient</h4>
+                    <p>Refining broad differentials and tolerating diagnostic uncertainty while protecting patient safety.</p>
                 </div>
             </div>
-            <div class="value-card">
-                <div class="value-card-image" style="background-image: url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80');"></div>
-                <div class="value-card-content">
+            <div class="value-item">
+                <div class="value-icon">02</div>
+                <div class="value-content">
                     <h4>Procedural Breadth</h4>
-                    <p>From laceration repairs and joint reductions to airways and resuscitation—the full spectrum of hands-on medicine.</p>
+                    <p>From laceration repairs and joint reductions to airways and resuscitation.</p>
                 </div>
             </div>
-            <div class="value-card">
-                <div class="value-card-image" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80');"></div>
-                <div class="value-card-content">
+            <div class="value-item">
+                <div class="value-icon">03</div>
+                <div class="value-content">
                     <h4>Constant Reassessment</h4>
-                    <p>The specialty demands humility, adaptability, and vigilance—qualities I continue to develop with every shift.</p>
-                </div>
-            </div>
-            <div class="value-card">
-                <div class="value-card-image" style="background-image: url('https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=800&q=80');"></div>
-                <div class="value-card-content">
-                    <h4>Leadership in Crisis</h4>
-                    <p>Bringing structure to chaos, clarity to uncertainty, and calm when others are overwhelmed.</p>
+                    <p>Humility, adaptability, and vigilance—qualities I continue to develop with every shift.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
-        <div class="video-section">
-            <h2>Video Introduction</h2>
-            <p style="color: var(--muted);">Coming soon—a personal introduction for program directors.</p>
-            <div class="video-placeholder">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <p>Video placeholder</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="closing">
-            <div class="closing-bg"></div>
-            <div class="closing-content">
-                <h2>What I'm Looking For</h2>
-                <p>I am seeking a residency program that will refine me into a physician my team can trust in critical moments.</p>
-                <p class="goal">My goal is to become an emergency physician my community can rely on—someone who brings steadiness in crisis, clarity in uncertainty, and leadership when it matters most.</p>
-            </div>
-        </div>
-    </section>
+    <div class="closing">
+        <h2>What I'm Looking For</h2>
+        <p class="subtitle">A residency program that will refine me into a physician my team can trust in critical moments.</p>
+        <p class="goal">My goal is to become an emergency physician my community can rely on—someone who brings steadiness in crisis, clarity in uncertainty, and leadership when it matters most.</p>
+    </div>
 
     <footer>
-        <p>Emergency Medicine Residency Application · 2025-2026</p>
+        <p>Emergency Medicine Residency Application · 2025–2026</p>
     </footer>
 </body>
 </html>
