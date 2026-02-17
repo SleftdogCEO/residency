@@ -361,6 +361,23 @@
             box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         }
 
+        /* Dual Images Side by Side */
+        .dual-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .dual-images .split-image img {
+            height: 400px;
+        }
+
+        @media (max-width: 800px) {
+            .dual-images {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Strengths Grid */
         .strengths {
             display: grid;
@@ -711,44 +728,52 @@
         <blockquote>Innovation is meaningful only if it supports excellent patient care.</blockquote>
     </div>
 
-    <!-- Fitness / Training -->
-    <div class="split-section reverse">
-        <div class="split-image">
-            <img src="images/training.jpg" alt="Training">
-            <div class="image-caption">
-                <span class="tag">First Attempt</span>
-                <p>First time lifting a sandbag. As you can tell by my face, I was deeply focused on not embarrassing myself.</p>
+    <!-- More Than Medicine - Two Photos Side by Side -->
+    <section>
+        <h2>More Than Medicine</h2>
+        <p style="color: var(--muted); max-width: 700px; margin-bottom: 2rem;">Former personal trainer with deep knowledge of MSK health, injury prevention, and human performance. I've spent years helping people move better, recover faster, and build sustainable health habits. This translates directly to patient care: practical counseling on exercise, injury prevention, and the long-term habits that keep people out of the ED.</p>
+        
+        <div class="dual-images">
+            <div class="split-image">
+                <img src="images/training.jpg" alt="Training">
+                <div class="image-caption">
+                    <span class="tag">First Attempt</span>
+                    <p>First time lifting a sandbag. As you can tell by my face, I was deeply focused on not embarrassing myself.</p>
+                </div>
+            </div>
+            <div class="split-image">
+                <img src="images/fitness.jpg" alt="Fitness" style="object-position: center 20%;">
+                <div class="image-caption">
+                    <span class="tag">Lifestyle</span>
+                    <p>Keeping people strong and healthy isn't just a job, it's a lifestyle. Forever invested in human performance.</p>
+                </div>
             </div>
         </div>
-        <div class="split-content">
-            <h2>More Than Medicine</h2>
-            <p>Former personal trainer with deep knowledge of MSK health, injury prevention, and human performance. I've spent years helping people move better, recover faster, and build sustainable health habits.</p>
-            <p>This translates directly to patient care: practical counseling on exercise, injury prevention, and the long-term habits that keep people out of the ED.</p>
-            <div class="tags">
-                <span class="tag-item">MSK Health</span>
-                <span class="tag-item">Personal Training</span>
-                <span class="tag-item">Injury Prevention</span>
-                <span class="tag-item">Anti-Aging</span>
-            </div>
-            <a href="exercises.html" class="library-link">
-                <span>Browse My Exercise Library</span>
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+        
+        <div class="tags" style="margin-top: 2rem;">
+            <span class="tag-item">MSK Health</span>
+            <span class="tag-item">Personal Training</span>
+            <span class="tag-item">Injury Prevention</span>
+            <span class="tag-item">Anti-Aging</span>
         </div>
-    </div>
+        <a href="exercises.html" class="library-link">
+            <span>Browse My Exercise Library</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+    </section>
 
-    <!-- Fitness / Flexing -->
+    <!-- Tech / Payment Processing -->
     <div class="split-section">
         <div class="split-image">
-            <img src="images/fitness.jpg" alt="Fitness" style="object-position: center 20%;">
+            <img src="images/restaurant.jpg" alt="Med school friends at restaurant" style="object-position: center 50%;">
             <div class="image-caption">
-                <span class="tag">Lifestyle</span>
-                <p>Keeping people strong and healthy isn't just a job, it's a lifestyle. Forever invested in human performance.</p>
+                <span class="tag">The Business</span>
+                <p>My med school friends eating at one of the restaurants I process payments for. Work and life, connected.</p>
             </div>
         </div>
         <div class="split-content">
             <h2>The Tech Side</h2>
-            <p>During medical school, I founded Sleft. I went door-to-door selling credit-card machines in Philadelphia. Success required reading the room, identifying the core problem, adjusting in real time, and following through with real value.</p>
+            <p>Payment processing is a family business. My dad built his career in merchant services, and I picked it up during medical school to help support myself. I went door-to-door selling credit-card machines in Philadelphia. Success required reading the room, identifying the core problem, adjusting in real time, and following through with real value.</p>
             <p>Every patient encounter in the Emergency Department similarly begins with limited information and demands thoughtful, decisive action. I expect to naturally become the internal AI resource for any program I join.</p>
         </div>
     </div>
