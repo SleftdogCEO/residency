@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Library | Grant Denmark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0b;
+            --surface: #111113;
+            --surface-2: #18181b;
+            --border: #27272a;
+            --text: #fafafa;
+            --muted: #a1a1aa;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.12);
+            --purple: #8b5cf6;
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-link {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Search & Filters */
+        .controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent);
+        }
+
+        .search-box::placeholder {
+            color: var(--muted);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Exercise Grid */
+        .exercise-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .exercise-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .exercise-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .exercise-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            text-transform: capitalize;
+        }
+
+        .exercise-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .exercise-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .exercise-card:hover .exercise-link {
+            color: var(--accent);
+        }
+
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 600px) {
+            .stats-row {
+                gap: 2rem;
+            }
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Grant <span>Denmark</span></a>
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Back to Main
+            </a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Exercise Library</h1>
+        <p>A curated database of exercises I built during my time as a personal trainer. Each exercise links to a video demonstration.</p>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-num" id="total-count">0</div>
+                <div class="stat-label">Exercises</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" id="category-count">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="text" class="search-box" id="search" placeholder="Search exercises...">
+        <div class="filter-buttons" id="filters"></div>
+    </div>
+
+    <div class="exercise-grid" id="exercise-grid"></div>
+
+    <footer>
+        <p>Built by Grant Denmark</p>
+    </footer>
+
+    <script>
+        let exercises = [];
+        let categories = [];
+        let activeFilter = 'all';
+
+        async function loadExercises() {
+            const response = await fetch('exercises.json');
+            exercises = await response.json();
+            
+            // Get unique categories
+            categories = [...new Set(exercises.map(e => e.category))];
+            
+            // Update stats
+            document.getElementById('total-count').textContent = exercises.length;
+            document.getElementById('category-count').textContent = categories.length;
+            
+            // Render filters
+            renderFilters();
+            
+            // Render exercises
+            renderExercises();
+        }
+
+        function renderFilters() {
+            const container = document.getElementById('filters');
+            container.innerHTML = `
+                <button class="filter-btn active" data-filter="all">All</button>
+                ${categories.map(cat => `
+                    <button class="filter-btn" data-filter="${cat}">${cat}</button>
+                `).join('')}
+            `;
+            
+            container.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.dataset.filter;
+                    renderExercises();
+                });
+            });
+        }
+
+        function renderExercises() {
+            const container = document.getElementById('exercise-grid');
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            
+            let filtered = exercises;
+            
+            if (activeFilter !== 'all') {
+                filtered = filtered.filter(e => e.category === activeFilter);
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(e => 
+                    e.name.toLowerCase().includes(searchTerm) ||
+                    e.category.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>No exercises found. Try a different search or filter.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filtered.map(exercise => `
+                <a href="${exercise.video}" target="_blank" class="exercise-card">
+                    <div class="exercise-category">${exercise.category}</div>
+                    <div class="exercise-name">${exercise.name}</div>
+                    <div class="exercise-link">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Watch Demo
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        document.getElementById('search').addEventListener('input', renderExercises);
+        
+        loadExercises();
+    </script>
+</body>
+</html>

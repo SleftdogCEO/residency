@@ -1,0 +1,422 @@
+[
+  {
+    "name": "leg lifts",
+    "category": "Core",
+    "video": "https://www.youtube.com/watch?v=9bJJ3soPjyI"
+  },
+  {
+    "name": "TA stab",
+    "category": "Core",
+    "video": "https://youtu.be/cgTm2GfMCmY"
+  },
+  {
+    "name": "deadbug",
+    "category": "Core",
+    "video": "https://youtu.be/MyqXBuRvR_I"
+  },
+  {
+    "name": "oblique rotations",
+    "category": "Core",
+    "video": "https://youtu.be/GI8HzEDnNgQ"
+  },
+  {
+    "name": "isometric stir the pot",
+    "category": "Core",
+    "video": "https://youtu.be/GI8HzEDnNgQ"
+  },
+  {
+    "name": "side plank",
+    "category": "Core",
+    "video": "https://youtu.be/7SYmzPtclP8"
+  },
+  {
+    "name": "plank",
+    "category": "Core",
+    "video": "https://youtu.be/nM4pD9bpnYo"
+  },
+  {
+    "name": "bird dog",
+    "category": "Core",
+    "video": "https://www.youtube.com/watch?v=xjz1dcWRBpQ"
+  },
+  {
+    "name": "squat press",
+    "category": "Full Body",
+    "video": "https://www.youtube.com/watch?v=owLDzFJV1fQ"
+  },
+  {
+    "name": "bridge",
+    "category": "Full Body",
+    "video": "https://www.youtube.com/watch?v=zgL755YPEiw"
+  },
+  {
+    "name": "single leg bridge",
+    "category": "Full Body",
+    "video": "https://www.youtube.com/watch?v=zgL755YPEiw"
+  },
+  {
+    "name": "bird dog",
+    "category": "Full Body",
+    "video": "https://www.youtube.com/watch?v=xjz1dcWRBpQ"
+  },
+  {
+    "name": "bridging with hip flexion",
+    "category": "Full Body",
+    "video": "https://youtu.be/iqvWpraFqbU"
+  },
+  {
+    "name": "squat press from floor",
+    "category": "Full Body",
+    "video": "https://youtu.be/kQHDuoJ-0ZQ"
+  },
+  {
+    "name": "inchworm",
+    "category": "Full Body",
+    "video": "https://youtu.be/RU5xXhM_bx0"
+  },
+  {
+    "name": "Horizonal abduction w/ band (reverse fly)",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=x7Egp6h5n7A"
+  },
+  {
+    "name": "row w/ resistance band and DB",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=ZN5d5A4VUbg"
+  },
+  {
+    "name": "bicep curl",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=CtltQqQD3E4"
+  },
+  {
+    "name": "tricep kickback overhead tricep extension",
+    "category": "Upper Body",
+    "video": "https://youtu.be/AO_PYdHB36c"
+  },
+  {
+    "name": "skull crusher",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=J4bVzPSTfig"
+  },
+  {
+    "name": "banded pushups",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=AtDc5ngmDBo"
+  },
+  {
+    "name": "lateral raise",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=88w_Os3Lec0"
+  },
+  {
+    "name": "front raise",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=fQ7MP1RbIkg"
+  },
+  {
+    "name": "shoulder press",
+    "category": "Upper Body",
+    "video": "https://youtu.be/hpVbSK6FejE"
+  },
+  {
+    "name": "upright row",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=Q04dLHrEKmE"
+  },
+  {
+    "name": "external rotation with band",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=C3r5MK8A7Ug"
+  },
+  {
+    "name": "pushup",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=0DuVnY5T5QY"
+  },
+  {
+    "name": "modified pushup",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=0DuVnY5T5QY"
+  },
+  {
+    "name": "single arm row",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=ZN5d5A4VUbg"
+  },
+  {
+    "name": "double arm row",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=ZN5d5A4VUbg"
+  },
+  {
+    "name": "shoulder taps",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=cOc60IxHNlU"
+  },
+  {
+    "name": "bent over reverse fly",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=VsYq-w3OmG0"
+  },
+  {
+    "name": "single arm chest fly",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=K1L07a5jMgc"
+  },
+  {
+    "name": "Y with or without band",
+    "category": "Upper Body",
+    "video": "https://www.youtube.com/watch?v=G8AoUHkOE8E"
+  },
+  {
+    "name": "squat",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=Qzd4YQeUPzg"
+  },
+  {
+    "name": "single leg deadlift",
+    "category": "Lower Body",
+    "video": "https://youtu.be/yEmAxtAZpfw"
+  },
+  {
+    "name": "anterior shin exercise",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=uLnNfzbdwuA"
+  },
+  {
+    "name": "calf raise",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=WVjXYuOfmZU"
+  },
+  {
+    "name": "lunge",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=K1cgsUYAF3Q"
+  },
+  {
+    "name": "standing abduction",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=rQvo3gAxbOs"
+  },
+  {
+    "name": "lying abduction",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=rQvo3gAxbOs"
+  },
+  {
+    "name": "standing hip extension",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=3F2Iwt3K7RM"
+  },
+  {
+    "name": "squat jump",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=fLEEXA3ce7Y"
+  },
+  {
+    "name": "side step",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=E7ZYt_ECB-E"
+  },
+  {
+    "name": "monster walks",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=jiJYcbQrnhA"
+  },
+  {
+    "name": "bridge",
+    "category": "Lower Body",
+    "video": "https://www.youtube.com/watch?v=zgL755YPEiw"
+  },
+  {
+    "name": "single leg stance",
+    "category": "Balance",
+    "video": "https://www.youtube.com/watch?v=qxxcr4dSvrY"
+  },
+  {
+    "name": "single leg deadlift",
+    "category": "Balance",
+    "video": "https://youtu.be/yEmAxtAZpfw"
+  },
+  {
+    "name": "single leg bicep curl",
+    "category": "Balance",
+    "video": "https://www.youtube.com/watch?v=aym_42NGSDg"
+  },
+  {
+    "name": "squat PNF",
+    "category": "PNF Patterns",
+    "video": "https://youtu.be/4Pc1PaSoz7c"
+  },
+  {
+    "name": "D2 flexion",
+    "category": "PNF Patterns",
+    "video": "https://www.youtube.com/watch?v=SbxN6KmaLgk"
+  },
+  {
+    "name": "deadlift",
+    "category": "Compound",
+    "video": "https://www.youtube.com/watch?v=24FtEAtbBtU"
+  },
+  {
+    "name": "straight leg deadlift",
+    "category": "Compound",
+    "video": "https://www.youtube.com/watch?v=oAmzCDisTpk"
+  },
+  {
+    "name": "squat",
+    "category": "Compound",
+    "video": "https://www.youtube.com/watch?v=Qzd4YQeUPzg"
+  },
+  {
+    "name": "hamstring",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=dk2KAUcF1Gk"
+  },
+  {
+    "name": "standing hip flexor stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=VpKS3FviUho"
+  },
+  {
+    "name": "Calf stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=bm8g9RIkxPw"
+  },
+  {
+    "name": "butterfly stretch",
+    "category": "Static Stretch",
+    "video": "https://youtu.be/hi0pujuEy-M"
+  },
+  {
+    "name": "90/90 stretch",
+    "category": "Static Stretch",
+    "video": "https://youtu.be/f2P2EFTSXiQ"
+  },
+  {
+    "name": "standing quad stretch",
+    "category": "Static Stretch",
+    "video": "https://youtu.be/ATdtleOj4mk"
+  },
+  {
+    "name": "kneeling quad stretch",
+    "category": "Static Stretch",
+    "video": "https://youtu.be/ATdtleOj4mk"
+  },
+  {
+    "name": "tricep stretch + sidebend",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=9F1uN0EK7j0"
+  },
+  {
+    "name": "shoulder- internal rotation",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=k4lCEWSRQK8"
+  },
+  {
+    "name": "pectoralis stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=-2X9TgUk78g"
+  },
+  {
+    "name": "forearm stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=uaTULufx3xI"
+  },
+  {
+    "name": "bicep stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=Tc-WWyJe9VU"
+  },
+  {
+    "name": "latissimus dorsi (back) stretch",
+    "category": "Static Stretch",
+    "video": "https://www.youtube.com/watch?v=aUl5W8In_NU"
+  },
+  {
+    "name": "hip flexion/shoulder extension walking",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=IurYh00xpxU"
+  },
+  {
+    "name": "pole overhead standing marches",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=Fix3m6A619U"
+  },
+  {
+    "name": "windmill stretch",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=_jclNeMFg18"
+  },
+  {
+    "name": "butt kicks + shoulder extension",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=xCYxtpy2XWk"
+  },
+  {
+    "name": "inchworm",
+    "category": "Dynamic Stretch",
+    "video": "https://youtu.be/RU5xXhM_bx0"
+  },
+  {
+    "name": "Overhead sidebend",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=dAsDgzk7Cvw"
+  },
+  {
+    "name": "Thoracic rotation no equipment standing",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=hCvpDeutjbs"
+  },
+  {
+    "name": "Thoracic rotation + mobilization",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=bcWdtV0YLFw"
+  },
+  {
+    "name": "thoracic rotation in quadruped",
+    "category": "Dynamic Stretch",
+    "video": "https://youtu.be/15FYsuPBuPU"
+  },
+  {
+    "name": "side-steps",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=E7ZYt_ECB-E"
+  },
+  {
+    "name": "monster walks",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=jiJYcbQrnhA"
+  },
+  {
+    "name": "toe walking",
+    "category": "Dynamic Stretch",
+    "video": "https://youtu.be/8pdwGbWLKRw"
+  },
+  {
+    "name": "heel walking",
+    "category": "Dynamic Stretch",
+    "video": "https://youtu.be/wDlSySyOF0A"
+  },
+  {
+    "name": "lunge around the world",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=0Bl7OoND5DQ"
+  },
+  {
+    "name": "hamstring curl + shoulder extension",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=xCYxtpy2XWk"
+  },
+  {
+    "name": "skaters",
+    "category": "Dynamic Stretch",
+    "video": "https://www.youtube.com/watch?v=_NXz3Y2PWrQ"
+  },
+  {
+    "name": "butt kicks",
+    "category": "Dynamic Stretch",
+    "video": "https://youtu.be/cqydUTBqd50"
+  }
+]
