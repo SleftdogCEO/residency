@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Grid Background */
         .bg-grid {
             position: fixed;
             inset: 0;
@@ -48,6 +48,67 @@
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* EKG Line Animation */
+        .ekg-container {
+            position: absolute;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+
+        .ekg-line {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            animation: ekg-scroll 8s linear infinite;
+        }
+
+        .ekg-line svg {
+            width: 50%;
+            height: 100%;
+        }
+
+        @keyframes ekg-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ekg-top {
+            top: 15%;
+        }
+
+        .ekg-bottom {
+            bottom: 10%;
+            opacity: 0.3;
+        }
+
+        /* Pulse Ring */
+        .pulse-ring {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            opacity: 0;
+            animation: pulse-expand 3s ease-out infinite;
+        }
+
+        .pulse-ring:nth-child(2) { animation-delay: 1s; }
+        .pulse-ring:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes pulse-expand {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .pulse-container {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
         }
 
         /* Hero */
@@ -64,32 +125,24 @@
         .hero-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(100px);
             pointer-events: none;
-            animation: float 20s ease-in-out infinite;
         }
 
         .hero-orb-1 {
             top: 10%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(59, 130, 246, 0.15);
+            right: 15%;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.12);
         }
 
         .hero-orb-2 {
             bottom: 20%;
-            left: 5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(139, 92, 246, 0.1);
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(139, 92, 246, 0.08);
         }
 
         .hero-content {
@@ -182,6 +235,22 @@
             margin-bottom: 1rem;
         }
 
+        /* EKG Divider */
+        .ekg-divider {
+            width: 100%;
+            height: 80px;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .ekg-divider svg {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            animation: ekg-scroll 6s linear infinite;
+        }
+
         /* Divider Quote */
         .divider-quote {
             padding: 6rem 2rem;
@@ -200,16 +269,29 @@
             position: relative;
         }
 
-        .divider-quote blockquote::before {
-            content: '';
-            position: absolute;
-            top: -2rem;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Heartbeat Icon */
+        .heartbeat-icon {
+            display: inline-block;
             width: 60px;
-            height: 3px;
-            background: var(--gradient);
-            border-radius: 2px;
+            height: 30px;
+            margin-bottom: 1.5rem;
+        }
+
+        .heartbeat-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .heartbeat-path {
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: heartbeat-draw 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat-draw {
+            0% { stroke-dashoffset: 200; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -200; }
         }
 
         /* Story Cards */
@@ -226,21 +308,36 @@
             padding: 2.5rem;
             position: relative;
             transition: border-color 0.3s;
+            overflow: hidden;
         }
 
         .story:hover {
             border-color: rgba(59, 130, 246, 0.3);
         }
 
-        .story::before {
+        .story-ekg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            overflow: hidden;
+        }
+
+        .story-ekg::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 2rem;
-            right: 2rem;
-            height: 1px;
-            background: var(--gradient);
-            border-radius: 1px;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 200%; }
         }
 
         .story-label {
@@ -275,6 +372,59 @@
             border-top: 1px solid var(--border);
             color: var(--text);
             font-style: italic;
+        }
+
+        /* Vital Signs Display */
+        .vitals-display {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .vital {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vital::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .vital-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .vital-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .vital-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            opacity: 0.2;
         }
 
         /* Innovation Section */
@@ -418,6 +568,46 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Monitor Frame */
+        .monitor-frame {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .monitor-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .monitor-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .monitor-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -471,6 +661,15 @@
             .innovation-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .vitals-display {
+                gap: 1rem;
+            }
+            .vital {
+                min-width: 100%;
+            }
+            .ekg-container {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -480,6 +679,67 @@
     <section class="hero">
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
+        
+        <!-- Animated EKG Lines -->
+        <div class="ekg-container ekg-top">
+            <div class="ekg-line">
+                <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+                    <path d="M0,50 L100,50 L110,50 L120,20 L130,80 L140,10 L150,90 L160,50 L170,50 L300,50 L310,50 L320,20 L330,80 L340,10 L350,90 L360,50 L370,50 L500,50 L510,50 L520,20 L530,80 L540,10 L550,90 L560,50 L600,50" 
+                          fill="none" 
+                          stroke="url(#ekg-gradient)" 
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="ekg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+                    <path d="M0,50 L100,50 L110,50 L120,20 L130,80 L140,10 L150,90 L160,50 L170,50 L300,50 L310,50 L320,20 L330,80 L340,10 L350,90 L360,50 L370,50 L500,50 L510,50 L520,20 L530,80 L540,10 L550,90 L560,50 L600,50" 
+                          fill="none" 
+                          stroke="url(#ekg-gradient)" 
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="ekg-container ekg-bottom">
+            <div class="ekg-line" style="animation-duration: 12s;">
+                <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+                    <path d="M0,50 L150,50 L160,50 L170,30 L180,70 L190,20 L200,80 L210,50 L220,50 L400,50 L410,50 L420,30 L430,70 L440,20 L450,80 L460,50 L600,50" 
+                          fill="none" 
+                          stroke="url(#ekg-gradient-2)" 
+                          stroke-width="1.5"
+                          stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="ekg-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#8b5cf6"/>
+                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+                    <path d="M0,50 L150,50 L160,50 L170,30 L180,70 L190,20 L200,80 L210,50 L220,50 L400,50 L410,50 L420,30 L430,70 L440,20 L450,80 L460,50 L600,50" 
+                          fill="none" 
+                          stroke="url(#ekg-gradient-2)" 
+                          stroke-width="1.5"
+                          stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Pulse Rings -->
+        <div class="pulse-container">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+        </div>
+
         <div class="hero-content">
             <span class="label">Emergency Medicine Applicant</span>
             <h1>Replacing Uncertainty with Competence</h1>
@@ -510,13 +770,48 @@
     </section>
 
     <div class="divider-quote">
+        <div class="heartbeat-icon">
+            <svg viewBox="0 0 100 40">
+                <path class="heartbeat-path" d="M0,20 L20,20 L25,20 L30,5 L35,35 L40,10 L45,30 L50,20 L55,20 L100,20" 
+                      fill="none" 
+                      stroke="url(#hb-gradient)" 
+                      stroke-width="2"
+                      stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="hb-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#3b82f6"/>
+                        <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
         <blockquote>Emergency care is not about adrenaline—it's about discipline, vigilance, and steady leadership when others are overwhelmed.</blockquote>
     </div>
 
     <section>
         <h2>Clinical Moments That Shaped Me</h2>
+        
+        <div class="vitals-display">
+            <div class="vital">
+                <div class="vital-label">Vigilance</div>
+                <div class="vital-value">ACTIVE</div>
+                <svg class="vital-wave" viewBox="0 0 100 30" preserveAspectRatio="none">
+                    <path d="M0,15 Q25,5 50,15 T100,15" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+                </svg>
+            </div>
+            <div class="vital">
+                <div class="vital-label">Reassessment</div>
+                <div class="vital-value">CONSTANT</div>
+            </div>
+            <div class="vital">
+                <div class="vital-label">Composure</div>
+                <div class="vital-value">STEADY</div>
+            </div>
+        </div>
+
         <div class="stories">
             <div class="story">
+                <div class="story-ekg"></div>
                 <span class="story-label">Vigilance</span>
                 <h3>The Patient Who Appeared Stable</h3>
                 <p>On a teaching shift, I worked with a resident caring for a patient who presented after reportedly using PCP. I expected agitation. Instead, he was nearly comatose. Throughout the shift, I reassessed him repeatedly. Near the end, his mental status improved—only for him to suddenly vomit blood. The room shifted instantly.</p>
@@ -524,6 +819,7 @@
             </div>
 
             <div class="story">
+                <div class="story-ekg"></div>
                 <span class="story-label">Clarity in Chaos</span>
                 <h3>A Family in Their Worst Moment</h3>
                 <p>I helped stabilize a pregnant woman who had been stabbed multiple times with a screwdriver. As I dressed her wounds, I reassured her three terrified children and explained why she did not need immediate imaging or antibiotics despite their very real fears.</p>
@@ -532,8 +828,23 @@
         </div>
     </section>
 
-    <div class="divider-quote">
-        <blockquote>Every patient encounter begins with limited information and demands thoughtful, decisive action.</blockquote>
+    <div class="ekg-divider">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path d="M0,40 L200,40 L220,40 L240,10 L260,70 L280,5 L300,75 L320,40 L340,40 L600,40 L620,40 L640,10 L660,70 L680,5 L700,75 L720,40 L740,40 L1000,40 L1020,40 L1040,10 L1060,70 L1080,5 L1100,75 L1120,40 L1200,40" 
+                  fill="none" 
+                  stroke="url(#divider-gradient)" 
+                  stroke-width="2"
+                  stroke-linecap="round"/>
+            <defs>
+                <linearGradient id="divider-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+                    <stop offset="20%" stop-color="#3b82f6"/>
+                    <stop offset="50%" stop-color="#8b5cf6"/>
+                    <stop offset="80%" stop-color="#3b82f6"/>
+                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+        </svg>
     </div>
 
     <section>
@@ -567,30 +878,51 @@
 
     <section>
         <h2>What I Value in Emergency Medicine</h2>
-        <div class="values-list">
-            <div class="value-item">
-                <div class="value-icon">01</div>
-                <div class="value-content">
-                    <h4>The Undifferentiated Patient</h4>
-                    <p>Refining broad differentials and tolerating diagnostic uncertainty while protecting patient safety.</p>
-                </div>
+        
+        <div class="monitor-frame">
+            <div class="monitor-header">
+                <div class="monitor-dot"></div>
+                <span class="monitor-title">Core Values Monitor</span>
             </div>
-            <div class="value-item">
-                <div class="value-icon">02</div>
-                <div class="value-content">
-                    <h4>Procedural Breadth</h4>
-                    <p>From laceration repairs and joint reductions to airways and resuscitation.</p>
+            <div class="values-list" style="margin-top: 0;">
+                <div class="value-item">
+                    <div class="value-icon">01</div>
+                    <div class="value-content">
+                        <h4>The Undifferentiated Patient</h4>
+                        <p>Refining broad differentials and tolerating diagnostic uncertainty while protecting patient safety.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="value-item">
-                <div class="value-icon">03</div>
-                <div class="value-content">
-                    <h4>Constant Reassessment</h4>
-                    <p>Humility, adaptability, and vigilance—qualities I continue to develop with every shift.</p>
+                <div class="value-item">
+                    <div class="value-icon">02</div>
+                    <div class="value-content">
+                        <h4>Procedural Breadth</h4>
+                        <p>From laceration repairs and joint reductions to airways and resuscitation.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">03</div>
+                    <div class="value-content">
+                        <h4>Constant Reassessment</h4>
+                        <p>Humility, adaptability, and vigilance—qualities I continue to develop with every shift.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="divider-quote">
+        <div class="heartbeat-icon">
+            <svg viewBox="0 0 100 40">
+                <path class="heartbeat-path" d="M0,20 L20,20 L25,20 L30,5 L35,35 L40,10 L45,30 L50,20 L55,20 L100,20" 
+                      fill="none" 
+                      stroke="url(#hb-gradient)" 
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      style="animation-delay: -1s;"/>
+            </svg>
+        </div>
+        <blockquote>Every patient encounter begins with limited information and demands thoughtful, decisive action.</blockquote>
+    </div>
 
     <div class="closing">
         <h2>What I'm Looking For</h2>
