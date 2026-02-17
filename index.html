@@ -413,8 +413,8 @@
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 200px 200px;
-            gap: 1rem;
+            grid-auto-rows: 280px;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
@@ -422,6 +422,8 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
+            position: relative;
+            background: var(--surface);
         }
 
         .photo-item img {
@@ -439,10 +441,32 @@
             grid-row: span 2;
         }
 
-        @media (max-width: 768px) {
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 900px) {
             .photo-grid {
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto;
+                grid-auto-rows: 250px;
+            }
+            .photo-item.tall {
+                grid-row: span 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 300px;
             }
             .photo-item.tall {
                 grid-row: span 1;
@@ -765,15 +789,23 @@
         <div class="photo-grid">
             <div class="photo-item">
                 <img src="images/family.jpg" alt="White Coat Ceremony">
+                <div class="photo-caption">White coat ceremony. Pictured: my dad, mom, and sister—the people who made this possible.</div>
             </div>
             <div class="photo-item">
                 <img src="images/clinical.jpg" alt="Clinical Training">
+                <div class="photo-caption">With one of my mentors in medicine. The masks stay on, the lessons stay forever.</div>
             </div>
             <div class="photo-item tall">
                 <img src="images/fitness.jpg" alt="Fitness">
+                <div class="photo-caption">Keeping people strong and healthy isn't just a job—it's a lifestyle. Former personal trainer, forever invested in human performance.</div>
+            </div>
+            <div class="photo-item">
+                <img src="images/training.jpg" alt="Training">
+                <div class="photo-caption">First time lifting an atlas stone. As you can tell by my face, I was deeply focused on not embarrassing myself.</div>
             </div>
             <div class="photo-item">
                 <img src="images/business.jpg" alt="Business">
+                <div class="photo-caption">Me closing a deal with the hospital board. (Just kidding—this is AI-generated. But give me a few years.)</div>
             </div>
         </div>
     </section>
